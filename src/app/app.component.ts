@@ -26,6 +26,8 @@ export class AppComponent {
       title: this.todoTitle,
       isDone: false
     });
+//reset for the title
+    this.todoTitle = '';
   }
 }
 
