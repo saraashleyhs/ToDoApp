@@ -14,7 +14,8 @@
       <div class="view">
         <label>{{todo.title}}</label>
         <div class="float-right">
-          <button type="button" (click)= deleteTodo(todo) class="btn btn-danger btn-sm">Delete</button>
+            <confirmation-modal [todo]='todo'></confirmation-modal>
+          <!-- <button type="button" (click)= deleteTodo(todo) class="btn btn-danger btn-sm">Delete</button> -->
         </div>
       </div>
     </li>
