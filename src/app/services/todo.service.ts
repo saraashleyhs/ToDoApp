@@ -29,6 +29,7 @@ export class TodoService {
   }
 
   deleteToDoItem(todo: ITodo){
+    console.log("delete methods was called in todo.services" + todo)
     const index = this.todoList.indexOf(todo);
     this.todoList.splice(index,1);
   }
