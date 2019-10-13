@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal, ModalDismissReasons, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import { TodoService } from '../services/todo.service';
+import { ITodo } from '../interfaces/itodo';
 
 @Component({
   selector: 'app-confirmation-modal',
@@ -8,8 +10,12 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 })
 export class ConfirmationModalComponent implements OnInit {
   closeResult: string;
+  modalRef: NgbModalRef;
 
-  constructor(private modalService: NgbModal) {}
+  constructor(
+    private modalService: NgbModal, 
+    private todoService : TodoService) 
+    {}
 
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
@@ -29,6 +35,11 @@ export class ConfirmationModalComponent implements OnInit {
     }
   }
   ngOnInit() {
+  }
+
+  yesDeleteTodo(todo:ITodo) {
+    console.log("Delete button in Modal was clicked: " + todo)
+    this.todoService.deleteToDoItem(todo);
   }
 }
 

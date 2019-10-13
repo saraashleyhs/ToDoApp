@@ -6,21 +6,32 @@ import { ITodo } from '../interfaces/itodo';
 })
 export class TodoService {
 
-  constructor() { }
+  constructor() {
+    this.addTodoItem('Learn Typescript');
+   }
 
   todoList: ITodo [] = [];
+  id = 0;
 
   getTodoItems() {
     return this.todoList;
   }
 
-  addTodoItem(todo: ITodo):void {
+  addTodoItem(title : string):void {
     this.todoList.push({
-      id: todo.id,
-      title: todo.title,
+      id: this.id,
+      title,
       isDone: false,
       isDoing: false,
       isEditing: false
     });
+    this.id ++ ;
   }
+
+  deleteToDoItem(todo: ITodo){
+    const index = this.todoList.indexOf(todo);
+    this.todoList.splice(index,1);
+  }
+
+
 }
