@@ -1,11 +1,17 @@
 
 <h1 align="center">Todo List</h1>
 <input type="text" class="todo-input" placeholder="Add next todo here" [(ngModel)]="todoTitle" (keyup.enter)=addTodo()>
+<div class="btn-row">
+  <button class= "btn btn-primary btn-sm" [routerLink]="['todo', 'done']">Done</button>
+  <button class= "btn btn-primary btn-sm" [routerLink]="['todo', 'undone']">To Do</button>
+</div>
 <ul align="center" class="list-group">
   <li class="list-group-item" *ngFor="let todo of todoList">
       <div class="view">
         <label>{{todo.title}}</label>
         <div class="float-right">
+            <button *ngIf="!todo.isDone" type="button" (click)=toggleDone(todo)>Mark Done</button>
+            <button *ngIf="todo.isDone" type="button" (click)=toggleDone(todo)> Mark NotDone</button>
             <app-confirmation-modal [todo]='todo'></app-confirmation-modal>
           <!-- <button type="button" (click)= deleteTodo(todo) class="btn btn-danger btn-sm">Delete</button> -->
         </div>

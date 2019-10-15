@@ -33,6 +33,8 @@ export class TodoService {
     const index = this.todoList.indexOf(todo);
     this.todoList.splice(index,1);
   }
-
+  toggleDone(todo : ITodo){
+    todo.isDone = !todo.isDone;
+  }
 
 }

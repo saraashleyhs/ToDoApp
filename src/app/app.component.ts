@@ -8,7 +8,4 @@ import { TodoService } from "./services/todo.service";
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent {
-  constructor() {}
-
-  ngOnInit() {}
 }
